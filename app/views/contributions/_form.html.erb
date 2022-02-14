@@ -1,0 +1,47 @@
+<%= form_with(model: contribution, local: true) do |form| %>
+  <% if contribution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contribution.errors.count, "error") %> prohibited this contribution from being saved:</h2>
+
+      <ul>
+        <% contribution.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field col-3">
+    <%= form.label :investors_id %>
+    <%= collection_select(:contribution, :investors_id, Investor.all, :id, :first_name, {:selected => contribution.investors_id}, { class: "form-control" } ) %>
+  </div>
+
+  <div class="field col-3">
+    <%= form.label :principal %>
+    <%= form.text_field :principal, class: "form-control" %>
+  </div>
+
+  <div class="field col-3">
+    <%= form.label :period_start %>
+    <%= form.date_field :period_start, class: "form-control"  %>
+  </div>
+
+  <div class="field col-3">
+    <%= form.label :period_end %>
+    <%= form.date_field :period_end, class: "form-control"  %>
+  </div>
+
+  <div class="field col-3">
+    <%= form.label :interest %>
+    <%= form.text_field :interest, class: "form-control" %>
+  </div>
+
+  <div class="field col-3">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, class: "form-control"  %>
+  </div><br />
+
+  <div class="actions col-3">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

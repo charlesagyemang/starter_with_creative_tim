@@ -48,9 +48,6 @@
 <% content_for :page_scripts do %>
   <script>
     function readyy(){
-      console.log("kaissshshshhs");
-      // $("#investors-table").DataTable({pageLength: 50})
-
       let oTable = $('#investors-table').DataTable({ pageLength: 50}); 
       $('#myInputTextField').keyup(function(){
           oTable.search($(this).val()).draw() ;
