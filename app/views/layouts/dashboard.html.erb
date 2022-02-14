@@ -25,7 +25,6 @@
   <body>
     <%= render 'pages/sidenav' %>
     <div class="main-content" id="panel">
-      <%= render partial: 'pages/topnav', locals: { bg_color_class: yield(:topnav_bg) } %>
       <%= yield %>
     </div>
     <footer>

@@ -1,0 +1,64 @@
+<div class="container-fluid">
+<p id="notice"><%= notice %></p>
+
+
+<h1>Investors</h1>
+<%= link_to 'Add New Investor', new_investor_path, class: "btn btn-primary"%><br /><br />
+
+<input id="myInputTextField" type="text" class="form-control" placeholder="Search Investors"><br /><br />
+
+<table id="investors-table" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+      <th>Position</th>
+      <th>Details</th>
+      <th>Occupation</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @investors.each do |investor| %>
+      <tr>
+        <td><%= investor.first_name %></td>
+        <td><%= investor.last_name %></td>
+        <td><%= investor.email %></td>
+        <td><%= investor.phone_number %></td>
+        <td><%= investor.position %></td>
+        <td><%= investor.details %></td>
+        <td><%= investor.occupation %></td>
+        <td><%= link_to 'Show', investor %></td>
+        <td><%= link_to 'Edit', edit_investor_path(investor) %></td>
+        <td><%= link_to 'Destroy', investor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+<% content_for :page_scripts do %>
+  <script>
+    function readyy(){
+      console.log("kaissshshshhs");
+      // $("#investors-table").DataTable({pageLength: 50})
+
+      let oTable = $('#investors-table').DataTable({ pageLength: 50}); 
+      $('#myInputTextField').keyup(function(){
+          oTable.search($(this).val()).draw() ;
+      })
+    }
+    $(document).ready(readyy)
+  </script>
+
+<% end %>
+
+</div>
