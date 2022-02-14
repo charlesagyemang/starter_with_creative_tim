@@ -22,5 +22,8 @@
       <%= render partial: 'pages/topnav', locals: { bg_color_class: yield(:topnav_bg) } %>
       <%= yield %>
     </div>
+    <footer>
+      <%= yield :page_scripts %>
+    </footer>
   </body>
 </html>
