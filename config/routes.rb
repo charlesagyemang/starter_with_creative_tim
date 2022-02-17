@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :payouts
   resources :contributions
   resources :investors
   devise_for :users
