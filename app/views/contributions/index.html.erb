@@ -1,8 +1,15 @@
+
+
+<div class="container-fluid">
 <p id="notice"><%= notice %></p>
 
 <h1>Contributions</h1>
 
-<table>
+<%= link_to 'Add New Contribution', new_contribution_path, class: "btn btn-primary"%><br /><br />
+
+<input id="myInputTextFieldd" type="text" class="form-control" placeholder="Search Investors"><br /><br />
+
+<table class="table" id="contributions-table">
   <thead>
     <tr>
       <th>References</th>
@@ -11,14 +18,16 @@
       <th>Period end</th>
       <th>Interest</th>
       <th>Amount</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @contributions.each do |contribution| %>
       <tr>
-        <td><%= contribution.references %></td>
+        <td><%= contribution.investor.first_name %></td>
         <td><%= contribution.principal %></td>
         <td><%= contribution.period_start %></td>
         <td><%= contribution.period_end %></td>
@@ -34,4 +43,17 @@
 
 <br>
 
-<%= link_to 'New Contribution', new_contribution_path %>
+
+<% content_for :page_scripts do %>
+  <script>
+    function readyy(){
+      let oTable = $('#contributions-table').DataTable({ pageLength: 50}); 
+      $('#myInputTextFieldd').keyup(function(){
+          oTable.search($(this).val()).draw() ;
+      })
+    }
+    $(document).ready(readyy)
+  </script>
+
+<% end %>
+</div>
