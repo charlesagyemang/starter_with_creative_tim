@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  loaner: one
+  loan: one
+  mode: MyString
+  amount: MyString
+  status: MyString
+  next_payment_date: MyString
+
+two:
+  loaner: two
+  loan: two
+  mode: MyString
+  amount: MyString
+  status: MyString
+  next_payment_date: MyString

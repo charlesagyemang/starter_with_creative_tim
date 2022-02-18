@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Loaner:</strong>
+  <%= @loan_payment.loaner_id %>
+</p>
+
+<p>
+  <strong>Loan:</strong>
+  <%= @loan_payment.loan_id %>
+</p>
+
+<p>
+  <strong>Mode:</strong>
+  <%= @loan_payment.mode %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @loan_payment.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @loan_payment.status %>
+</p>
+
+<p>
+  <strong>Next payment date:</strong>
+  <%= @loan_payment.next_payment_date %>
+</p>
+
+<%= link_to 'Edit', edit_loan_payment_path(@loan_payment) %> |
+<%= link_to 'Back', loan_payments_path %>

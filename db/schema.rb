@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_18_060103) do
+ActiveRecord::Schema.define(version: 2022_02_18_065738) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 2022_02_18_060103) do
     t.string "occupation"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "loan_payments", force: :cascade do |t|
+    t.bigint "loaner_id", null: false
+    t.bigint "loan_id", null: false
+    t.string "mode"
+    t.string "amount"
+    t.string "status"
+    t.string "next_payment_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["loan_id"], name: "index_loan_payments_on_loan_id"
+    t.index ["loaner_id"], name: "index_loan_payments_on_loaner_id"
   end
 
   create_table "loaners", force: :cascade do |t|
@@ -122,6 +135,8 @@ ActiveRecord::Schema.define(version: 2022_02_18_060103) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "loan_payments", "loaners"
+  add_foreign_key "loan_payments", "loans"
   add_foreign_key "loans", "loaners"
   add_foreign_key "payouts", "contributions"
   add_foreign_key "payouts", "investors"

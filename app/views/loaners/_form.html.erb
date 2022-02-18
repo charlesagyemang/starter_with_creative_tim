@@ -46,7 +46,6 @@
       <div class="form-group col-3">
           <%= form.label :id_type %>
           <%= form.select(:id_type, options_for_select(["VOTERS_ID_CARD", "GHANA_CARD", "PASSPORT"], :selected => form.object.id_type), {}, {class: "form-control"} ) %>
-
       </div>
 
       <div class="field col-3">
@@ -70,10 +69,10 @@
         <%= form.text_area :address,  class: "form-control"  %>
       </div>
 
-        <div class="field col-3">
-          <%= form.label :status %>
-          <%= form.select(:status, options_for_select(["CREATED", "VERIFIED", "PENDING"], :selected => form.object.status), {}, {class: "form-control"} ) %>
-        </div>
+      <div class="field col-3">
+        <%= form.label :status %>
+        <%= form.select(:status, options_for_select(["CREATED", "VERIFIED", "PENDING"], :selected => form.object.status), {}, {class: "form-control"} ) %>
+      </div>
 
     </div>
 
