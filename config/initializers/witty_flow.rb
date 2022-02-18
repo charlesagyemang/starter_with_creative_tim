@@ -1,0 +1,1 @@
+WITTLY_FLOW_CLIENT = Wittyflow::Sms.new("1f41908b-a9d7-4408-a0bf-4ee4665b3276", "CvAILbsSdfjGAVVZr6RG0zgBv5jHUioh88vCuHu914")
