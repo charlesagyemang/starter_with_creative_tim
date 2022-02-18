@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  principal: 9.99
+  date_payment_starts: 2022-02-18
+  date_loan_given: 2022-02-18
+  interest_on_loan_per_month: 9.99
+  loan_period_in_months: 1
+  payment_cadence: MyString
+  payment_day: MyString
+  loaner: one
+  status: MyString
+
+two:
+  principal: 9.99
+  date_payment_starts: 2022-02-18
+  date_loan_given: 2022-02-18
+  interest_on_loan_per_month: 9.99
+  loan_period_in_months: 1
+  payment_cadence: MyString
+  payment_day: MyString
+  loaner: two
+  status: MyString

@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Principal:</strong>
+  <%= @loan.principal %>
+</p>
+
+<p>
+  <strong>Date payment starts:</strong>
+  <%= @loan.date_payment_starts %>
+</p>
+
+<p>
+  <strong>Date loan given:</strong>
+  <%= @loan.date_loan_given %>
+</p>
+
+<p>
+  <strong>Interest on loan per month:</strong>
+  <%= @loan.interest_on_loan_per_month %>
+</p>
+
+<p>
+  <strong>Loan period in months:</strong>
+  <%= @loan.loan_period_in_months %>
+</p>
+
+<p>
+  <strong>Payment cadence:</strong>
+  <%= @loan.payment_cadence %>
+</p>
+
+<p>
+  <strong>Payment day:</strong>
+  <%= @loan.payment_day %>
+</p>
+
+<p>
+  <strong>Loaner:</strong>
+  <%= @loan.loaner_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @loan.status %>
+</p>
+
+<%= link_to 'Edit', edit_loan_path(@loan) %> |
+<%= link_to 'Back', loans_path %>

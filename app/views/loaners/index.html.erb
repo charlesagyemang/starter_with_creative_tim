@@ -1,0 +1,66 @@
+<div class="container-fluid">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Loaners</h1>
+
+
+  <%= link_to 'Add New Contribution', new_contribution_path, class: "btn btn-primary"%><br /><br />
+
+  <input id="myInputTextFielddd" type="text" class="form-control" placeholder="Search Loaners"><br /><br />
+
+  <table class="table" id="loaners-table">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Phone number</th>
+        <th>Email</th>
+        <th>Occupation</th>
+        <th>Id type</th>
+        <th>Id number</th>
+        <th>Address</th>
+        <th>Is verified</th>
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @loaners.each do |loaner| %>
+        <tr>
+          <td><%= loaner.first_name %></td>
+          <td><%= loaner.last_name %></td>
+          <td><%= loaner.phone_number %></td>
+          <td><%= loaner.email %></td>
+          <td><%= loaner.occupation %></td>
+          <td><%= loaner.id_type %></td>
+          <td><%= loaner.id_number %></td>
+          <td><%= loaner.address %></td>
+          <td><%= loaner.is_verified %></td>
+          <td><%= loaner.status %></td>
+          <td><%= link_to 'Show', loaner %></td>
+          <td><%= link_to 'Edit', edit_loaner_path(loaner) %></td>
+          <td><%= link_to 'Destroy', loaner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <% content_for :page_scripts do %>
+    <script>
+      function readyy(){
+        let oTable = $('#loaners-table').DataTable({ pageLength: 50}); 
+        $('#myInputTextFielddd').keyup(function(){
+            oTable.search($(this).val()).draw() ;
+        })
+      }
+      $(document).ready(readyy)
+    </script>
+
+  <% end %>
+
+</div>

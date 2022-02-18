@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @loaner.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @loaner.last_name %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @loaner.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @loaner.email %>
+</p>
+
+<p>
+  <strong>Occupation:</strong>
+  <%= @loaner.occupation %>
+</p>
+
+<p>
+  <strong>Id type:</strong>
+  <%= @loaner.id_type %>
+</p>
+
+<p>
+  <strong>Id number:</strong>
+  <%= @loaner.id_number %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @loaner.address %>
+</p>
+
+<p>
+  <strong>Is verified:</strong>
+  <%= @loaner.is_verified %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @loaner.status %>
+</p>
+
+<%= link_to 'Edit', edit_loaner_path(@loaner) %> |
+<%= link_to 'Back', loaners_path %>

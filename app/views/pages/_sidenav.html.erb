@@ -57,6 +57,29 @@
               <span class="nav-link-text">Payouts</span>
             </a>
           </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loaners/index') ? 'active': '' %>" href="<%= loaners_path %>">
+              <i class="ni ni-briefcase-24 text-default"></i>
+              <span class="nav-link-text">Loaners</span>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loans/index') ? 'active': '' %>" href="<%= loans_path %>">
+              <i class="ni ni-briefcase-24 text-default"></i>
+              <span class="nav-link-text">Loans</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loan_payments/index') ? 'active': '' %>" href="<%= loans_path %>">
+              <i class="ni ni-briefcase-24 text-default"></i>
+              <span class="nav-link-text">Loan Payments</span>
+            </a>
+          </li>
           
         </ul>
         <!-- Divider -->

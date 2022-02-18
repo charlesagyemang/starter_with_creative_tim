@@ -1,0 +1,2 @@
+class Loaner < ApplicationRecord
+end

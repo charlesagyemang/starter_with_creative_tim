@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_152855) do
+ActiveRecord::Schema.define(version: 2022_02_18_060103) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,36 @@ ActiveRecord::Schema.define(version: 2022_02_17_152855) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "loaners", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone_number"
+    t.string "email"
+    t.string "occupation"
+    t.string "id_type"
+    t.string "id_number"
+    t.text "address"
+    t.boolean "is_verified"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "loans", force: :cascade do |t|
+    t.decimal "principal"
+    t.date "date_payment_starts"
+    t.date "date_loan_given"
+    t.decimal "interest_on_loan_per_month"
+    t.integer "loan_period_in_months"
+    t.string "payment_cadence"
+    t.string "payment_day"
+    t.bigint "loaner_id", null: false
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["loaner_id"], name: "index_loans_on_loaner_id"
+  end
+
   create_table "payouts", force: :cascade do |t|
     t.bigint "investor_id", null: false
     t.bigint "contribution_id", null: false
@@ -92,6 +122,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_152855) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "loans", "loaners"
   add_foreign_key "payouts", "contributions"
   add_foreign_key "payouts", "investors"
 end
