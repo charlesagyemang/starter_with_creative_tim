@@ -1,2 +1,19 @@
-<h1>Cockpit#admin</h1>
-<p>Find me in app/views/cockpit/admin.html.erb</p>
+<div class="header bg-primary pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+        <br />
+        <br />
+      <%= render 'metrics_summary' %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col-xl-6">
+        <%= render 'investors_table', investors: @investors %>
+    </div>
+     <div class="col-xl-6">
+        <%= render 'loaners_table', loaner: @loaners %>
+    </div>
+  </div>
+</div>

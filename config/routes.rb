@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :contributions
   resources :investors
   devise_for :users
-  root to: 'pages#dashboard'
+  root to: 'cockpit#admin'
 
   get 'pages/dashboard'
   get 'pages/icons'

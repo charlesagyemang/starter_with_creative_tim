@@ -11,42 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
+    <%= form.text_field :last_name, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :email %>
-    <%= form.text_field :email %>
+    <%= form.text_field :email, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :phone_number %>
-    <%= form.text_field :phone_number %>
+    <%= form.text_field :phone_number, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :position %>
-    <%= form.text_field :position %>
+    <%= form.text_field :position, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :details %>
-    <%= form.text_area :details %>
+    <%= form.text_area :details, class: "form-control"%>
   </div>
 
-  <div class="field">
+  <div class="field col-3">
     <%= form.label :occupation %>
-    <%= form.text_field :occupation %>
+    <%= form.text_field :occupation, class: "form-control" %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+   <br />
+  <div class="actions col-3">
+    <%= form.submit  "Submit", class: "btn btn-primary"%>
   </div>
 <% end %>
