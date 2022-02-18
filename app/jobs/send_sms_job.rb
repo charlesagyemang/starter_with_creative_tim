@@ -2,7 +2,6 @@ class SendSmsJob < ApplicationJob
   queue_as :default
 
   def perform(to, message)
-    # Do something later
     send_sms(to, message)
   end
 

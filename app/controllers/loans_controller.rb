@@ -24,6 +24,8 @@ class LoansController < ApplicationController
   def create
     @loan = Loan.new(loan_params)
 
+    # SendSmsJob.perform_later(@loan.loaner.phone_number, "You have a new loan of #{@loan.principal}")
+
     respond_to do |format|
       if @loan.save
         format.html { redirect_to @loan, notice: "Loan was successfully created." }
