@@ -65,6 +65,11 @@ class LoanersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def loaner_params
-      params.require(:loaner).permit(:first_name, :last_name, :phone_number, :email, :occupation, :id_type, :id_number, :address, :is_verified, :status)
+      params.require(:loaner).permit(
+        :first_name, :last_name, :phone_number, 
+        :email, :occupation, :id_type, :id_number, 
+        :address, :is_verified, :status,
+        :id_card
+      )
     end
 end

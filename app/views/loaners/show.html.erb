@@ -50,5 +50,14 @@
   <%= @loaner.status %>
 </p>
 
+<% if @loaner.id_card.attached? %>
+  <%= link_to 'Download File',  @loaner.id_card.service_url, target: "_blank" %>
+  <div class="text-center">
+   <a href="<%= @loaner.id_card.service_url %>" target="_blank" class="avatar">
+      <img src="<%= @loaner.id_card.service_url %>" class="rounded img-thumbnail" alt="hshshshshs">
+    </a>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_loaner_path(@loaner) %> |
 <%= link_to 'Back', loaners_path %>

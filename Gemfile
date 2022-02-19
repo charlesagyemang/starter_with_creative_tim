@@ -58,3 +58,4 @@ gem 'font-awesome-rails'
 
 gem "devise", "~> 4.8"
 gem 'wittyflow'
+gem 'aws-sdk-s3', require: false

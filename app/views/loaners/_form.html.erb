@@ -74,6 +74,11 @@
         <%= form.select(:status, options_for_select(["CREATED", "VERIFIED", "PENDING"], :selected => form.object.status), {}, {class: "form-control"} ) %>
       </div>
 
+      <div class="field col-3">
+        <%= form.label :id_card %>
+        <%= form.file_field :id_card, class: "form-control" %>
+      </div>
+
     </div>
 
 
