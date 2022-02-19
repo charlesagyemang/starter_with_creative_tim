@@ -1,6 +1,7 @@
 class PayoutsController < ApplicationController
   before_action :set_payout, only: %i[ show edit update destroy ]
   layout 'dashboard'
+  before_action :authenticate_user!
 
   # GET /payouts or /payouts.json
   def index

@@ -1,6 +1,8 @@
 class CockpitController < ApplicationController
   layout 'dashboard'
 
+  before_action :authenticate_user!
+
   def admin
     @loans_count = Loan.count
     @investors_count = Investor.count

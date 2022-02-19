@@ -1,5 +1,6 @@
 class ContributionsController < ApplicationController
   before_action :set_contribution, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
   layout 'dashboard'
 
   # GET /contributions or /contributions.json

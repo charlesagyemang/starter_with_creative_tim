@@ -1,6 +1,7 @@
 class InvestorsController < ApplicationController
   before_action :set_investor, only: %i[ show edit update destroy ]
   layout 'dashboard'
+  before_action :authenticate_user!
   # GET /investors or /investors.json
   def index
     @investors = Investor.all

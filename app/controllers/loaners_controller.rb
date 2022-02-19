@@ -1,6 +1,7 @@
 class LoanersController < ApplicationController
   before_action :set_loaner, only: %i[ show edit update destroy ]
   layout 'dashboard'
+  before_action :authenticate_user!
   
   # GET /loaners or /loaners.json
   def index
