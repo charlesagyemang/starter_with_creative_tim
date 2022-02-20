@@ -4,7 +4,7 @@ class Loan < ApplicationRecord
   before_create :set_amount
 
   def set_amount
-    self.amount = self.interest_on_loan_per_month > 0.00 ? (((self.loan_period_in_months * self.interest_on_loan_per_month) / 100) *  self.principal) + self.loan_period_in_months : self.principal
+    self.amount = self.interest_on_loan_per_month > 0.00 ? (((self.loan_period_in_months * self.interest_on_loan_per_month) / 100) *  self.principal) + self.principal : self.principal
   end
 end
 
