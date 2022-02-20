@@ -18,7 +18,6 @@
         <th>Next payment date</th>
         <th></th>
         <th></th>
-        <th></th>
       </tr>
     </thead>
 
@@ -30,10 +29,9 @@
           <td><%= loan_payment.mode %></td>
           <td><%= loan_payment.amount %></td>
           <td><%= loan_payment.status %></td>
-          <td>...</td>
+          <td><%= loan_payment.next_payment_date %></td>
           <td><%= link_to 'Show', loan_payment %></td>
           <td><%= link_to 'Edit', edit_loan_payment_path(loan_payment) %></td>
-          <td><%= link_to 'Destroy', loan_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

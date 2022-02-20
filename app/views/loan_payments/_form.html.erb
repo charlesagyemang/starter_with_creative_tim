@@ -23,7 +23,7 @@
 
   <div class="field col-3">
     <%= form.label :mode %>
-    <%= form.select(:status, options_for_select(["CASH", "BANK", "MOMO"], :selected => form.object.status), {}, {class: "form-control"} ) %>
+    <%= form.select(:mode, options_for_select(["CASH", "BANK", "MOMO"], :selected => form.object.status), {}, {class: "form-control"} ) %>
   </div>
 
   <div class="field col-3">

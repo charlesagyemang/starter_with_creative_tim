@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_20_060109) do
+ActiveRecord::Schema.define(version: 2022_02_20_072407) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,9 +66,9 @@ ActiveRecord::Schema.define(version: 2022_02_20_060109) do
     t.string "mode"
     t.string "amount"
     t.string "status"
-    t.string "next_payment_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "next_payment_date"
     t.index ["loan_id"], name: "index_loan_payments_on_loan_id"
     t.index ["loaner_id"], name: "index_loan_payments_on_loaner_id"
   end
