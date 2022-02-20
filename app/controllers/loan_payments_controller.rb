@@ -24,10 +24,10 @@ class LoanPaymentsController < ApplicationController
   # POST /loan_payments or /loan_payments.json
   def create
     @loan_payment = LoanPayment.new(loan_payment_params)
-
     respond_to do |format|
       if @loan_payment.save
-        format.html { redirect_to @loan_payment, notice: "Loan payment was successfully created." }
+        SendSmsJob.perform_later(@loan_payment) if ensure_status_is_received
+        format.html { redirect_to @loan_payment, notice: 'Loan payment was successfully created.' }
         format.json { render :show, status: :created, location: @loan_payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -68,4 +68,9 @@ class LoanPaymentsController < ApplicationController
     def loan_payment_params
       params.require(:loan_payment).permit(:loaner_id, :loan_id, :mode, :amount, :status, :next_payment_date)
     end
+
+    def ensure_status_is_received
+      @loan_payment.status == 'RECEIVED'
+    end
+    
 end

@@ -1,8 +1,16 @@
 class SendSmsJob < ApplicationJob
   queue_as :default
 
-  def perform(to, message)
-    send_sms(to, message)
+  def perform(loan_payment)
+    # send_sms(to, message)
+    phone_number = loan_payment.loaner.phone_number
+    total_payment = LoanPayment.where(loan_id: loan_payment.loan_id).sum(:amount)
+    message = "Amount Received: #{loan_payment.amount}.\n
+    Mode Of Payment: #{loan_payment.mode}.\n
+    Total Payment: #{loan_payment.next_payment_date}\n
+    Next Payment Date: #{loan_payment.next_payment_date}\n
+    Amount Remaning: #{loan_payment.amount - total_payment}
+    "
   end
 
   private
