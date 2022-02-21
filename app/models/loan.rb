@@ -7,5 +7,3 @@ class Loan < ApplicationRecord
     self.amount = self.interest_on_loan_per_month > 0.00 ? (((self.loan_period_in_months * self.interest_on_loan_per_month) / 100) *  self.principal) + self.principal : self.principal
   end
 end
-
-#master
