@@ -4,10 +4,12 @@ class SendSmsJob < ApplicationJob
   def perform(loan_payment)
     # send_sms(to, message)
     phone_number = loan_payment.loaner.phone_number
-    total_payment = LoanPayment.where(loan_id: loan_payment.loan_id, loaner_id: loan_payment.loaner_id).map { |x| x.amount.to_i }.inject(0, :+)
-    message = "Hi #{loan_payment.loaner.first_name}, we have received GHC #{loan_payment.amount} from you via #{loan_payment.mode}. check your stats below\nTotal Paid: GHC #{total_payment}\nNext Payment Date: #{loan_payment.next_payment_date.strftime("%B %d, %Y")}\nAmount Remaning: GHC #{loan_payment.loan.amount - total_payment}"
-    message = total_payment < loan_payment.loan.amount ? message : "Hi #{loan_payment.loaner.first_name}, you have completed your loan payment. Congrats!. See Stats Below\nTotal Paid: #{total_payment}\nAmount Remaning: GHC #{loan_payment.loan.amount - total_payment}"
+    total_payment = LoanPayment.where(loan_id: loan_payment.loan_id, loaner_id: loan_payment.loaner_id).sum(:amount)
+    message = "Hi #{loan_payment.loaner.first_name}, we have received GHC #{loan_payment.amount} from you  as part payment on your loan.\nTotal Paid: GHC #{total_payment}\nAmount Remaning: GHC #{loan_payment.loan.amount - total_payment}\nNext Payment Date: #{loan_payment.next_payment_date.strftime("%B %d, %Y")}"
+    message = total_payment < loan_payment.loan.amount ? message : "Hi #{loan_payment.loaner.first_name}, you have completed your loan payment.\nTotal Paid: #{total_payment}\nAmount Remaning: GHC #{loan_payment.loan.amount - total_payment}"
     puts "============ MESSAGES #{message} ====================="
+    puts "============ PhoneNumber #{phone_number} ====================="
+
     send_sms(phone_number, message)
   end
 

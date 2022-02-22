@@ -1,34 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+    <br />
 
-<p>
-  <strong>Loaner:</strong>
-  <%= @loan_payment.loaner_id %>
-</p>
+    <%= link_to 'Back', loans_path, class: "col-3" %>
+    <br />
+    <br />
 
-<p>
-  <strong>Loan:</strong>
-  <%= @loan_payment.loan_id %>
-</p>
+    <h1 class="col">Loan Details For <%=@loaner.full_name %> Concerning the  GHC <%=@loan.amount %> Loan</h1>
+    <h1 class="col">Paid GHC <%=@paid%></h1>
+    <h1 class="col">Remaining GHC <%=@remaining%></h1>
 
-<p>
-  <strong>Mode:</strong>
-  <%= @loan_payment.mode %>
-</p>
+    <br />
 
-<p>
-  <strong>Amount:</strong>
-  <%= @loan_payment.amount %>
-</p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @loan_payment.status %>
-</p>
+</div>
 
-<p>
-  <strong>Next payment date:</strong>
-  <%= @loan_payment.next_payment_date %>
-</p>
+    <%= render 'loan_payment_table', data: @loan_payments_by_loaner %>
 
-<%= link_to 'Edit', edit_loan_payment_path(@loan_payment) %> |
-<%= link_to 'Back', loan_payments_path %>
+

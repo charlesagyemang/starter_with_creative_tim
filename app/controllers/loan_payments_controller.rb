@@ -5,16 +5,28 @@ class LoanPaymentsController < ApplicationController
   
   # GET /loan_payments or /loan_payments.json
   def index
-    @loan_payments = LoanPayment.all
+    @loan_payments = LoanPayment.includes(:loan, :loaner).order(created_at: :desc)
   end
 
   # GET /loan_payments/1 or /loan_payments/1.json
   def show
+    redirect_to loaners_path, notice: "You are unauthorized to add loan payments please see admin to get this rectified. Thank you" unless params_exists?
+    @loan_payments_by_loaner = LoanPayment.where(loan_id: params["loan"], loaner_id: params["loaner"]).order(created_at: :desc)
+    @loan = Loan.find(params["loan"])
+    @loaner = Loaner.find(params["loaner"])
+    @paid = @loan.loan_payments.sum(:amount)
+    @remaining = @loan.amount - @paid
   end
 
   # GET /loan_payments/new
   def new
+    redirect_to loaners_path, notice: "You are unauthorized to add loan payments please see admin to get this rectified. Thank you" unless params_exists?
     @loan_payment = LoanPayment.new
+    @loan_payments_by_loaner = LoanPayment.where(loan_id: params["loan"], loaner_id: params["loaner"]).order(created_at: :desc)
+    @loan = Loan.find(params["loan"])
+    @loaner = Loaner.find(params["loaner"])
+    @paid = @loan.loan_payments.sum(:amount)
+    @remaining = @loan.amount - @paid
   end
 
   # GET /loan_payments/1/edit
@@ -23,11 +35,14 @@ class LoanPaymentsController < ApplicationController
 
   # POST /loan_payments or /loan_payments.json
   def create
+    # redirect_to loaners_path, notice: "You are unauthorized to add loan payments please see admin to get this rectified. Thank you" unless params_exists?
     @loan_payment = LoanPayment.new(loan_payment_params)
     respond_to do |format|
       if @loan_payment.save
         SendSmsJob.perform_later(@loan_payment) if ensure_status_is_received
-        format.html { redirect_to @loan_payment, notice: 'Loan payment was successfully created.' }
+        format.html do
+          redirect_to "/loan_payments/#{@loan_payment.id}?loan=#{@loan_payment.loan_id}&loaner=#{@loan_payment.loaner_id}", notice: "Loan payment was successfully created."
+        end
         format.json { render :show, status: :created, location: @loan_payment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -37,7 +52,7 @@ class LoanPaymentsController < ApplicationController
   end
 
   # PATCH/PUT /loan_payments/1 or /loan_payments/1.json
-  def update
+  def updates
     respond_to do |format|
       if @loan_payment.update(loan_payment_params)
         format.html { redirect_to @loan_payment, notice: "Loan payment was successfully updated." }
@@ -67,6 +82,10 @@ class LoanPaymentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def loan_payment_params
       params.require(:loan_payment).permit(:loaner_id, :loan_id, :mode, :amount, :status, :next_payment_date)
+    end
+
+    def params_exists?
+      params["loaner"] && params["loaner"].length > 0 && params["loan"] && params["loan"].length > 0
     end
 
     def ensure_status_is_received

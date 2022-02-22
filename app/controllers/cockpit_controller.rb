@@ -10,6 +10,9 @@ class CockpitController < ApplicationController
     @loan_payments_count = LoanPayment.count
     @investors = Investor.last(10)
     @loaners = Loaner.last(10)
+    @loan_amount = Loan.sum(:amount)
+    @contributions_amount = Contribution.sum(:amount)
+    @loan_payment_amount = LoanPayment.sum(:amount)
   end
 
   def user

@@ -12,16 +12,6 @@
   <% end %>
 
   <div class="field col-3">
-    <%= form.label :loaner_id %>
-    <%= collection_select(:loan_payment, :loaner_id, Loaner.all, :id, :first_name, {:selected => loan_payment.loaner_id}, { class: "form-control" } ) %>
-  </div>
-
-  <div class="field col-3">
-    <%= form.label :loan_id %>
-    <%= collection_select(:loan_payment, :loan_id, Loan.all, :id, :principal, {:selected => loan_payment.loan_id}, { class: "form-control" } ) %>
-  </div>
-
-  <div class="field col-3">
     <%= form.label :mode %>
     <%= form.select(:mode, options_for_select(["CASH", "BANK", "MOMO"], :selected => form.object.status), {}, {class: "form-control"} ) %>
   </div>
@@ -38,5 +28,15 @@
 
   <div class="actions col-3">
     <%= form.submit "Submit", class: "btn btn-primary" %>
+  </div>
+
+  <div style="visibility:hidden;">
+
+    <%= collection_select(:loan_payment, :loaner_id, Loaner.where(id: params["loaner"]), :id, :first_name, {:selected => loan_payment.loaner || params["loaner"]}, { class: "form-control" } ) %>
+  </div>
+
+  <div  style="visibility:hidden;">
+
+    <%= collection_select(:loan_payment, :loan_id, Loan.where(id: params["loan"]), :id, :principal, {:selected => loan_payment.loan || params["loan"]}, { class: "form-control" } ) %>
   </div>
 <% end %>

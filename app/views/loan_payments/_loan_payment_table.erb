@@ -1,7 +1,6 @@
 <div class="container-fluid">
-  <p id="notice"><%= notice %></p>
 
-  <h1>Loan Payments</h1>
+  <h1>Loan Payments History</h1>
 
   <input id="myInputTextFielddo" type="text" class="form-control" placeholder="Search Investors"><br /><br />
 
@@ -20,7 +19,7 @@
     </thead>
 
     <tbody>
-      <% @loan_payments.each do |loan_payment| %>
+      <% data.each do |loan_payment| %>
         <tr>
           <td><%= loan_payment.loaner.first_name %></td>
           <td><%= loan_payment.loan.principal %></td>

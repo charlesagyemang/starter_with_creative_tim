@@ -12,18 +12,12 @@
     <thead>
       <tr>
         <th>ID Card</th>
-        <th>First name</th>
-        <th>Last name</th>
+        <th>Name</th>
         <th>Phone number</th>
-        <th>Email</th>
         <th>Occupation</th>
-        <th>Id type</th>
-        <th>Id number</th>
         <th>Address</th>
         <th>Is verified</th>
-        <th>Status</th>
-        <th></th>
-        <th></th>
+        <th>Loans</th>
         <th></th>
       </tr>
     </thead>
@@ -44,19 +38,14 @@
               </a>
             <% end %>
           </td>
-          <td><%= loaner.first_name %></td>
-          <td><%= loaner.last_name %></td>
+          <td><%= loaner.full_name %></td>
           <td><%= loaner.phone_number %></td>
-          <td><%= loaner.email %></td>
           <td><%= loaner.occupation %></td>
-          <td><%= loaner.id_type %></td>
-          <td><%= loaner.id_number %></td>
           <td><%= loaner.address %></td>
           <td><%= loaner.is_verified %></td>
-          <td><%= loaner.status %></td>
-          <td><%= link_to 'Show', loaner %></td>
-          <td><%= link_to 'Edit', edit_loaner_path(loaner) %></td>
-          <td><%= link_to 'Destroy', loaner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><a href=<%= "/loans/new?loaner=#{loaner.id}"%> class="btn btn-success btn-sm text-white">Give/View Loans</a></td>
+          <td><%= link_to 'Show', loaner %>
+          <%= link_to 'Edit', edit_loaner_path(loaner) %></td>
         </tr>
       <% end %>
     </tbody>

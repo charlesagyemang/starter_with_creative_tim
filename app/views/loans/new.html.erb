@@ -1,5 +1,11 @@
-<h1>New Loan</h1>
+<div class="container-fluid">
+<br />
+    <%= link_to 'Back', "/loans?loaner=#{@loaner.id}" %>  <br /><br />
+
+    <h1>Add New Loan For <%= @loaner.full_name %></h1>
+</div>
+
 
 <%= render 'form', loan: @loan %>
+<%= render 'loans_table', loans: @all_individual_loans %>
 
-<%= link_to 'Back', loans_path %>

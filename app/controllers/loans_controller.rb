@@ -5,16 +5,22 @@ class LoansController < ApplicationController
 
   # GET /loans or /loans.json
   def index
-    @loans = Loan.all
+    @loans = Loan.order(created_at: :desc)
   end
 
   # GET /loans/1 or /loans/1.json
   def show
+    redirect_to "/", notice: "You have no business here" unless params_exists?
+    @loaner = Loaner.find(params[:loaner])
+    @all_individual_loans = Loan.where(loaner_id: params[:loaner]).order(created_at: :desc)
   end
 
   # GET /loans/new
   def new
+    redirect_to "/", notice: "You have no business here" unless params_exists?
     @loan = Loan.new
+    @loaner = Loaner.find(params[:loaner])
+    @all_individual_loans = Loan.where(loaner_id: params[:loaner]).order(created_at: :desc)
   end
 
   # GET /loans/1/edit
@@ -29,7 +35,9 @@ class LoansController < ApplicationController
 
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to @loan, notice: "Loan was successfully created." }
+        format.html do
+          redirect_to "/loans/#{@loan.id}?loaner=#{@loan.loaner_id}", notice: "Loan was successfully created."
+        end
         format.json { render :show, status: :created, location: @loan }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -69,5 +77,9 @@ class LoansController < ApplicationController
     # Only allow a list of trusted parameters through.
     def loan_params
       params.require(:loan).permit(:principal, :date_payment_starts, :date_loan_given, :interest_on_loan_per_month, :loan_period_in_months, :payment_cadence, :payment_day, :loaner_id, :status)
+    end
+
+    def params_exists?
+      params["loaner"] && params["loaner"].length > 0
     end
 end

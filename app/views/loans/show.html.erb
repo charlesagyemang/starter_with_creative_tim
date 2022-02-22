@@ -1,49 +1,10 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+<br />
+    <%= link_to 'Back', "/loans?loaner=#{@loaner.id}" %>  <br /><br />
 
-<p>
-  <strong>Principal:</strong>
-  <%= @loan.principal %>
-</p>
+    <h1>All Loans Under <%= @loaner.full_name %></h1>
+</div>
 
-<p>
-  <strong>Date payment starts:</strong>
-  <%= @loan.date_payment_starts %>
-</p>
 
-<p>
-  <strong>Date loan given:</strong>
-  <%= @loan.date_loan_given %>
-</p>
-
-<p>
-  <strong>Interest on loan per month:</strong>
-  <%= @loan.interest_on_loan_per_month %>
-</p>
-
-<p>
-  <strong>Loan period in months:</strong>
-  <%= @loan.loan_period_in_months %>
-</p>
-
-<p>
-  <strong>Payment cadence:</strong>
-  <%= @loan.payment_cadence %>
-</p>
-
-<p>
-  <strong>Payment day:</strong>
-  <%= @loan.payment_day %>
-</p>
-
-<p>
-  <strong>Loaner:</strong>
-  <%= @loan.loaner_id %>
-</p>
-
-<p>
-  <strong>Status:</strong>
-  <%= @loan.status %>
-</p>
-
-<%= link_to 'Edit', edit_loan_path(@loan) %> |
-<%= link_to 'Back', loans_path %>
+<%= render 'form', loan: Loan.new %>
+<%= render 'loans_table', loans: @all_individual_loans %>
