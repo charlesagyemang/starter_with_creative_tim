@@ -1,0 +1,42 @@
+
+
+<div class="card">
+  <div class="card-header border-0">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="mb-0">Recent Loan Payments</h3>
+      </div>
+      <div class="col text-right">
+        <a href="/loaners" class="btn btn-sm btn-primary">All Loan Payments</a>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <!-- Projects table -->
+    <table id="payments-table" class="table">
+    <thead>
+      <tr>
+        <th>Loaner</th>
+        <th>Loan</th>
+        <th>Mode</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Next payment date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% data.each do |loan_payment| %>
+        <tr>
+          <td><%= loan_payment.loaner.first_name %></td>
+          <td><%= loan_payment.loan.principal %></td>
+          <td><%= loan_payment.mode %></td>
+          <td><%= loan_payment.amount %></td>
+          <td><%= loan_payment.status %></td>
+          <td><%= loan_payment.next_payment_date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
