@@ -18,7 +18,7 @@ class SendSmsJob < ApplicationJob
   private
     def send_sms(to, message)
       client = WITTLY_FLOW_CLIENT
-      res = client.send_sms("BenjiCap", to, message)
+      res = client.send_sms("NBKFund", to, message)
       puts "============ SENDING SMS TO #{to} SMS LOGS: #{message} ====================="
       puts "============ SMS LOGS: #{res} ====================="
     end
