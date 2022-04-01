@@ -12,7 +12,7 @@ class SendSmsJob < ApplicationJob
 
     send_sms(phone_number, message)
     send_sms("0507565349", message)
-    send_sms("0579269697", message)
+    send_sms("0241763680", message)
   end
 
   private
