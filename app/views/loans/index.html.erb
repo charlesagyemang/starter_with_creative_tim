@@ -17,19 +17,21 @@
         <th>Int</th>
         <th>Amount + Int</th>
         <th>Details</th>
+        <th>Paid</th>
         <th>Payments</th>
         <th></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @loans.includes(:loaner).each do |loan| %>
+      <% @loans.includes(:loaner, :loan_payments).each do |loan| %>
         <tr>
           <td><%= loan.loaner.full_name %></td>
           <td><%= loan.principal %></td>
           <td><%= loan.amount - loan.principal %></td>
           <td><%= loan.amount %></td>
           <td><%= loan.details %></td>
+          <td><%= loan.loan_payments.sum(:amount) %></td>
           <td>
             <a href=<%= "/loan_payments/new?loan=#{loan.id}&loaner=#{loan.loaner_id}"%> class="btn btn-success btn-sm text-white">Add/View Loan Payments</a>
           </td>
