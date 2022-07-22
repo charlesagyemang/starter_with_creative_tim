@@ -19,14 +19,14 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('investors/index') ? 'active': '' %>" href="<%= investors_path %>">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
               <i class="ni ni-briefcase-24 text-yellow"></i>
               <span class="nav-link-text">Investors</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('contributions/index') ? 'active': '' %>" href="<%= contributions_path %>">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
               <i class="ni ni-credit-card text-blue"></i>
               <span class="nav-link-text">Contributions</span>
             </a>
@@ -34,34 +34,12 @@
 
           
           <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('payouts/index') ? 'active': '' %>" href="<%= payouts_path %>">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
               <i class="ni ni-bold-right text-green"></i>
               <span class="nav-link-text">Payouts</span>
             </a>
           </li>
 
-
-          <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loaners/index') ? 'active': '' %>" href="<%= loaners_path %>">
-              <i class="ni ni-circle-08 text-pink"></i>
-              <span class="nav-link-text">Loaners</span>
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loans/index') ? 'active': '' %>" href="<%= loans_path %>">
-              <i class="ni ni-folder-17 text-orange"></i>
-              <span class="nav-link-text">Loans</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('loan_payments/index') ? 'active': '' %>" href="<%= loan_payments_path %>">
-              <i class="ni ni-check-bold text-green"></i>
-              <span class="nav-link-text">Loan Payments</span>
-            </a>
-          </li>
           
         </ul>
   
