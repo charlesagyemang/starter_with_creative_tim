@@ -3,7 +3,7 @@
     <!-- Brand -->
     <div class="sidenav-header  align-items-center">
       <a class="navbar-brand" href="<%= root_path %>">
-        <h1>NBKFund</h1>
+        <h1>New Project</h1>
       </a>
     </div>
     <div class="navbar-inner">
@@ -19,24 +19,9 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
+            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/user') ? 'active': '' %>" href="<%= cockpit_user_path %>">
               <i class="ni ni-briefcase-24 text-yellow"></i>
               <span class="nav-link-text">Investors</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
-              <i class="ni ni-credit-card text-blue"></i>
-              <span class="nav-link-text">Contributions</span>
-            </a>
-          </li>
-
-          
-          <li class="nav-item">
-            <a class="nav-link <%= "#{controller_name}/#{action_name}".eql?('cockpit/admin') ? 'active': '' %>" href="<%= cockpit_admin_path %>">
-              <i class="ni ni-bold-right text-green"></i>
-              <span class="nav-link-text">Payouts</span>
             </a>
           </li>
 
